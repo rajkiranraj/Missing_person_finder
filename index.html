@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Missing Person Identifier</title>
+  <script defer src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900 p-6">
+  <h1 class="text-3xl font-bold text-center mb-8">Missing Person Identifier</h1>
+  <!-- Report Missing Section -->
+  <div class="bg-white p-6 rounded shadow mb-6">
+    <h2 class="text-xl font-semibold mb-4">Report Missing Person</h2>
+    <form id="reportForm" class="space-y-4">
+      <input type="text" id="name" placeholder="Name" required class="w-full border p-2 rounded" />
+      <input type="text" id="age" placeholder="Age" required class="w-full border p-2 rounded" />
+      <input type="text" id="gender" placeholder="Gender" required class="w-full border p-2 rounded" />
+      <input type="text" id="lastSeen" placeholder="Last Seen Location" required class="w-full border p-2 rounded" />
+      <input type="text" id="aadhar" placeholder="Aadhar Number" required class="w-full border p-2 rounded" />
+      <input type="text" id="phone" placeholder="Phone Number" required class="w-full border p-2 rounded" />
+      <input type="text" id="address" placeholder="Address" required class="w-full border p-2 rounded" />
+      <input type="text" id="complainant" placeholder="Complainant Name" required class="w-full border p-2 rounded" />
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Submit Report</button>
+    </form>
+  </div>
+  <!-- Search Section -->
+  <div class="bg-white p-6 rounded shadow mb-6">
+    <h2 class="text-xl font-semibold mb-4">Search Missing Person</h2>
+    <form id="searchForm" class="space-y-4">
+      <input type="text" id="searchName" placeholder="Enter Name to Search" required class="w-full border p-2 rounded" />
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Search</button>
+    </form>
+  </div>
+  <!-- Search Result -->
+  <div class="bg-white p-6 rounded shadow" id="resultContainer">
+    <h2 class="text-xl font-semibold mb-4">Search Result</h2>
+    <pre id="searchResult" class="bg-gray-100 p-4 rounded whitespace-pre-wrap">No results yet.</pre>
+  </div>
+</body>
+</html>

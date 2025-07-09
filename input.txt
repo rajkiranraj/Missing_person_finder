@@ -1,0 +1,10 @@
+Arjun,22,Male,Mumbai,123456789987,9999999999,3-7-8/9 thane Mumbai,dinesh
+rajkiran,20,male,khammam,4664737388222,2784849959595,tkupalli,mising
+Priya,19,Female,Delhi,987654321012,8888888888,12/5 Rohini Delhi,anita
+Rohit,25,Male,Bangalore,112233445566,7777777777,45/2 Koramangala Bangalore,suresh
+Fatima,30,Female,Hyderabad,223344556677,6666666666,8-2-293 Banjara Hills Hyderabad,ahmed
+John,28,Male,Chennai,334455667788,5555555555,23/1 Anna Nagar Chennai,george
+Sneha,21,Female,Pune,445566778899,4444444444,7/8 Kothrud Pune,meera
+Vikram,35,Male,Kolkata,556677889900,3333333333,14/6 Salt Lake Kolkata,arvind
+Ayesha,27,Female,Ahmedabad,667788990011,2222222222,3/4 Navrangpura Ahmedabad,farhan
+shashank,20,male,wl,894744999584,458575995,wl,missing
