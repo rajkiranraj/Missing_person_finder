@@ -1,4 +1,4 @@
-// Configuration - Render backend URL
+/// Configuration - Render backend URL
 const API_BASE_URL = 'https://missing-person-identifier.onrender.com';
 
 // Load stats on page load
