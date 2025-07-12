@@ -1,3 +1,6 @@
+// Configuration - Render backend URL
+const API_BASE_URL = 'https://missing-person-identifier.onrender.com';
+
 // Load stats on page load
 document.addEventListener('DOMContentLoaded', function() {
   loadStats();
@@ -58,7 +61,7 @@ function updateToggleUI(isDark) {
 
 async function loadStats() {
   try {
-    const res = await fetch('/stats');
+    const res = await fetch(`${API_BASE_URL}/stats`);
     const stats = await res.json();
     document.getElementById('totalCases').textContent = stats.total;
     document.getElementById('foundCases').textContent = stats.found;
