@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Compiled C++ binary
+app
+app.exe
+
+# Temporary files
+*.tmp
+*.log
+.DS_Store
+
+# IDE files
+.vscode/
+.idea/
+
+# Runtime generated files
+output.txt
+search.txt

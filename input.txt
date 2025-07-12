@@ -8,3 +8,4 @@ Sneha,21,Female,Pune,445566778899,4444444444,7/8 Kothrud Pune,meera
 Vikram,35,Male,Kolkata,556677889900,3333333333,14/6 Salt Lake Kolkata,arvind
 Ayesha,27,Female,Ahmedabad,667788990011,2222222222,3/4 Navrangpura Ahmedabad,farhan
 shashank,20,male,wl,894744999584,458575995,wl,missing
+raj,20,Male,kmm,2552,252,tk,hy
