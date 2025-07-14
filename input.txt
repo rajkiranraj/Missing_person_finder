@@ -11,3 +11,4 @@ shashank,20,male,wl,894744999584,458575995,wl,missing
 raj,20,Male,kmm,2552,252,tk,hy
 ganga priya,30,Female,Mumbai,123456789909,9090090888,7-7/6 thane lane,hasini
 ganga,30,Female,Mumbai,123456789909,9090090888,8-8-9 old bombay street mumbai,hasini
+dinesh,45,Male,gauhati,898967674545,7878909045,7-9-0/6 ganht road gauhati,tilak
