@@ -1,38 +1,59 @@
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <algorithm>
-#include <cctype>
 #include <string>
+#include <algorithm>
+#include <unordered_map>
 using namespace std;
-
 struct Person {
     string name, age, gender, lastSeen, aadhar, phone, address, complainant;
 };
-
-vector<Person> people;
-
-string toLower(const string& s) {
-    string result = s;
-    transform(result.begin(), result.end(), result.begin(), [](unsigned char c){ return tolower(c); });
-    return result;
+// Node for Binary Search Tree
+struct Node {
+    Person data;
+    Node* left;
+    Node* right;
+    Node(Person p) : data(p), left(nullptr), right(nullptr) {}
+};
+// BST insert by name
+Node* insertBST(Node* root, Person p) {
+    if (!root) return new Node(p);
+    if (p.name < root->data.name)
+        root->left = insertBST(root->left, p);
+    else
+        root->right = insertBST(root->right, p);
+    return root;
 }
-
-string trim(const string& s) {
-    size_t start = s.find_first_not_of(" \t\n\r");
-    size_t end = s.find_last_not_of(" \t\n\r");
-    return (start == string::npos) ? "" : s.substr(start, end - start + 1);
+// Trim whitespace
+string trim(const string& str) {
+    size_t first = str.find_first_not_of(" \t\n\r");
+    size_t last = str.find_last_not_of(" \t\n\r");
+    return (first == string::npos || last == string::npos) ? "" : str.substr(first, last - first + 1);
 }
-
-void loadInput() {
+// Lowercase helper
+string toLower(string s) {
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    return s;
+}
+// Search BST
+void searchBST(Node* root, const string& key, vector<Person>& results) {
+    if (!root) return;
+    string nodeName = toLower(trim(root->data.name));
+    string searchKey = toLower(trim(key));
+    if (nodeName.find(searchKey) != string::npos)
+        results.push_back(root->data);
+    searchBST(root->left, key, results);
+    searchBST(root->right, key, results);
+}
+// Load input.txt into BST and Hash Table
+void loadData(Node*& root, unordered_map<string, vector<Person>>& table) {
     ifstream file("input.txt");
     string line;
     while (getline(file, line)) {
         if (trim(line).empty()) continue;
-        Person p;
         stringstream ss(line);
+        Person p;
         getline(ss, p.name, ',');
         getline(ss, p.age, ',');
         getline(ss, p.gender, ',');
@@ -41,47 +62,42 @@ void loadInput() {
         getline(ss, p.phone, ',');
         getline(ss, p.address, ',');
         getline(ss, p.complainant, ',');
-        people.push_back(p);
+        root = insertBST(root, p);
+        string key = toLower(trim(p.name));
+        table[key].push_back(p);
     }
     file.close();
 }
-
-void searchPerson() {
-    ifstream searchFile("search.txt");
-    string searchTerm;
-    getline(searchFile, searchTerm);
-    searchFile.close();
-    searchTerm = trim(searchTerm);
-    string searchLower = toLower(searchTerm);
+int main() {
+    Node* bstRoot = nullptr;
+    unordered_map<string, vector<Person>> hashTable;
+    // Load data
+    loadData(bstRoot, hashTable);
+    // Read search term from search.txt
+    ifstream sfile("search.txt");
+    string searchName;
+    getline(sfile, searchName);
+    sfile.close();
     vector<Person> results;
-    for (const auto& p : people) {
-        string nameLower = toLower(trim(p.name));
-        if (nameLower.find(searchLower) != string::npos) {
-            results.push_back(p);
-        }
-    }
-    ofstream out("output.txt");
+    searchBST(bstRoot, searchName, results);
+    ofstream outfile("output.txt");
     if (!results.empty()) {
-        out << "Found " << results.size() << " record(s):\n";
+        outfile << "Found " << results.size() << " record(s):\n";
         for (const auto& p : results) {
-            out << "-----------------------------\n";
-            out << "Name: " << trim(p.name) << "\n";
-            out << "Age: " << trim(p.age) << "\n";
-            out << "Gender: " << trim(p.gender) << "\n";
-            out << "Last Seen: " << trim(p.lastSeen) << "\n";
-            out << "Aadhar: " << trim(p.aadhar) << "\n";
-            out << "Phone: " << trim(p.phone) << "\n";
-            out << "Address: " << trim(p.address) << "\n";
-            out << "Complainant: " << trim(p.complainant) << "\n";
+            outfile << "-----------------------------\n";
+            outfile << "Name: " << trim(p.name) << "\n";
+            outfile << "Age: " << trim(p.age) << "\n";
+            outfile << "Gender: " << trim(p.gender) << "\n";
+            outfile << "Last Seen: " << trim(p.lastSeen) << "\n";
+            outfile << "Aadhar: " << trim(p.aadhar) << "\n";
+            outfile << "Phone: " << trim(p.phone) << "\n";
+            outfile << "Address: " << trim(p.address) << "\n";
+            outfile << "Complainant: " << trim(p.complainant) << "\n";
         }
     } else {
-        out << "Search failed. Person not found.";
+        outfile << "Search failed. Person not found.";
     }
-    out.close();
-}
+    outfile.close();
 
-int main() {
-    loadInput();
-    searchPerson();
     return 0;
 }
