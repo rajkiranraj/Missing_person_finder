@@ -12,3 +12,4 @@ raj,20,Male,kmm,2552,252,tk,hy
 ganga priya,30,Female,Mumbai,123456789909,9090090888,7-7/6 thane lane,hasini
 ganga,30,Female,Mumbai,123456789909,9090090888,8-8-9 old bombay street mumbai,hasini
 dinesh,45,Male,gauhati,898967674545,7878909045,7-9-0/6 ganht road gauhati,tilak
+ganesh,32,Male,Hyderabad,222222222222,6767676767,8-43/23/4/2/1 srilakshmi nilayam east balaji hills  uppal hyderabad,Sanjay
